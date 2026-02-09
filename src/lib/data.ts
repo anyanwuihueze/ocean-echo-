@@ -1,9 +1,9 @@
 import type { Vibe, UserProfile } from '@/lib/types';
-import { GlassOfWine, Sunset, Music, BrainCircuit, Moon, Users, Bot, Coffee } from 'lucide-react';
+import { GlassWater, Sunset, Music, BrainCircuit, Moon, Users } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export const vibeTags: Vibe[] = [
-  { id: 'vibing', label: 'Just vibing', icon: GlassOfWine },
+  { id: 'vibing', label: 'Just vibing', icon: GlassWater },
   { id: 'sunset', label: 'Sunset drinks', icon: Sunset },
   { id: 'music', label: 'Music & movement', icon: Music },
   { id: 'convo', label: 'Deep convo', icon: BrainCircuit },
