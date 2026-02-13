@@ -2,51 +2,51 @@
   "placeholderImages": [
     {
       "id": "avatar1",
-      "description": "Artistic portrait of a woman with painted face",
-      "imageUrl": "https://images.unsplash.com/photo-1533318234383-047a42779310?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "artistic portrait"
+      "description": "Portrait of a woman with curly hair",
+      "imageUrl": "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "portrait woman"
     },
     {
       "id": "avatar2",
-      "description": "Colorful abstract portrait of a person",
-      "imageUrl": "https://images.unsplash.com/photo-1617812229388-b219f8680199?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "colorful portrait"
+      "description": "Black and white portrait of a woman",
+      "imageUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "portrait woman"
     },
     {
       "id": "avatar3",
-      "description": "Portrait of a man with blue and pink lighting",
-      "imageUrl": "https://images.unsplash.com/photo-1561041838-51e71a0a2f4a?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "neon portrait"
+      "description": "Smiling man with a beard",
+      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "portrait man"
     },
     {
       "id": "avatar4",
-      "description": "Woman with neon lights reflecting on her face",
-      "imageUrl": "https://images.unsplash.com/photo-1580477422997-18758b293155?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "neon portrait"
+      "description": "Man wearing headphones and looking away",
+      "imageUrl": "https://images.unsplash.com/photo-1583864697784-a0efc8379f70?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "portrait man"
     },
     {
       "id": "avatar5",
-      "description": "Portrait of a man in shadows with a single light source",
-      "imageUrl": "https://images.unsplash.com/photo-1569428037937-290049284351?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "dramatic portrait"
+      "description": "Woman in a neon-lit environment",
+      "imageUrl": "https://images.unsplash.com/photo-1611601322175-8041a2033b9c?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "neon portrait"
     },
     {
       "id": "avatar6",
-      "description": "Abstract portrait with flowers overlayed on a face",
-      "imageUrl": "https://images.unsplash.com/photo-1604008587116-083b48f6574f?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "floral portrait"
+      "description": "Man's profile with neon light",
+      "imageUrl": "https://images.unsplash.com/photo-1589995808361-159e8f0f0dfe?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "neon portrait"
     },
     {
       "id": "avatar7",
-      "description": "Silhouette of a person against a colorful background",
-      "imageUrl": "https://images.unsplash.com/photo-1560253334-9aa8fe5936a1?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "silhouette portrait"
+      "description": "Man with dramatic lighting on his face",
+      "imageUrl": "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "dramatic portrait"
     },
     {
       "id": "avatar8",
-      "description": "Close up of a man's face with dramatic lighting",
-      "imageUrl": "https://images.unsplash.com/photo-1581803118522-7b72a50f7e9f?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "dramatic portrait"
+      "description": "Woman looking at the camera with soft lighting",
+      "imageUrl": "https://images.unsplash.com/photo-1621784564114-539c38183182?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "portrait woman"
     }
   ]
 }
