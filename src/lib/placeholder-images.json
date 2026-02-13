@@ -2,51 +2,51 @@
   "placeholderImages": [
     {
       "id": "avatar1",
-      "description": "Abstract portrait of a person with blue and orange tones",
-      "imageUrl": "https://images.unsplash.com/photo-1527630941-4a229fd674ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMHBvcnRyYWl0fGVufDB8fHx8MTc3MDYwNTg3M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract portrait"
+      "description": "Artistic portrait of a woman with painted face",
+      "imageUrl": "https://images.unsplash.com/photo-1533318234383-047a42779310?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "artistic portrait"
     },
     {
       "id": "avatar2",
-      "description": "Abstract portrait of a person with green and purple tones",
-      "imageUrl": "https://images.unsplash.com/photo-1642776187128-d1d60e3b0754?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhYnN0cmFjdCUyMHBvcnRyYWl0fGVufDB8fHx8MTc3MDYwNTg3M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract portrait"
+      "description": "Colorful abstract portrait of a person",
+      "imageUrl": "https://images.unsplash.com/photo-1617812229388-b219f8680199?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "colorful portrait"
     },
     {
       "id": "avatar3",
-      "description": "Abstract portrait of a person with pink and yellow tones",
-      "imageUrl": "https://images.unsplash.com/photo-1622564045913-6241fcce67e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMHBvcnRyYWl0fGVufDB8fHx8MTc3MDYwNTg3M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract portrait"
+      "description": "Portrait of a man with blue and pink lighting",
+      "imageUrl": "https://images.unsplash.com/photo-1561041838-51e71a0a2f4a?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "neon portrait"
     },
     {
       "id": "avatar4",
-      "description": "Abstract portrait of a person with teal and red tones",
-      "imageUrl": "https://images.unsplash.com/photo-1527630941-4a229fd674ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMHBvcnRyYWl0fGVufDB8fHx8MTc3MDYwNTg3M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract portrait"
+      "description": "Woman with neon lights reflecting on her face",
+      "imageUrl": "https://images.unsplash.com/photo-1580477422997-18758b293155?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "neon portrait"
     },
     {
       "id": "avatar5",
-      "description": "Abstract portrait of a person with monochrome tones",
-      "imageUrl": "https://images.unsplash.com/photo-1587592237398-e914fbc249e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWJzdHJhY3QlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NzA2MDU4NzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract portrait"
+      "description": "Portrait of a man in shadows with a single light source",
+      "imageUrl": "https://images.unsplash.com/photo-1569428037937-290049284351?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "dramatic portrait"
     },
     {
       "id": "avatar6",
-      "description": "Abstract portrait of a person with earthy tones",
-      "imageUrl": "https://images.unsplash.com/photo-1587592237398-e914fbc249e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YWJzdHJhY3QlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NzA2MDU4NzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract portrait"
+      "description": "Abstract portrait with flowers overlayed on a face",
+      "imageUrl": "https://images.unsplash.com/photo-1604008587116-083b48f6574f?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "floral portrait"
     },
     {
       "id": "avatar7",
-      "description": "Abstract portrait of a person with pastel tones",
-      "imageUrl": "https://images.unsplash.com/photo-1721611869305-77a5035b51c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhYnN0cmFjdCUyMHBvcnRyYWl0fGVufDB8fHx8MTc3MDYwNTg3M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract portrait"
+      "description": "Silhouette of a person against a colorful background",
+      "imageUrl": "https://images.unsplash.com/photo-1560253334-9aa8fe5936a1?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "silhouette portrait"
     },
     {
       "id": "avatar8",
-      "description": "Abstract portrait of a person with vibrant, contrasting colors",
-      "imageUrl": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxhYnN0cmFjdCUyMHBvcnRyYWl0fGVufDB8fHx8MTc3MDYwNTg3M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract portrait"
+      "description": "Close up of a man's face with dramatic lighting",
+      "imageUrl": "https://images.unsplash.com/photo-1581803118522-7b72a50f7e9f?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "dramatic portrait"
     }
   ]
 }
