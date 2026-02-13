@@ -6,6 +6,13 @@ import { Toaster } from '@/components/ui/toaster';
 export const metadata: Metadata = {
   title: 'Echoes at Dusk',
   description: 'Discover and connect with others through shared vibes.',
+  manifest: '/manifest.json',
+  themeColor: '#0a0a0a',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Echoes at Dusk',
+  },
 };
 
 export default function RootLayout({

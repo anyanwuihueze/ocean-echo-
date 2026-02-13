@@ -1,0 +1,10 @@
+{
+  "name": "Echoes at Dusk",
+  "short_name": "Echoes",
+  "description": "Discover and connect with others through shared vibes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": []
+}
