@@ -41,6 +41,9 @@ const prompt = ai.definePrompt({
   name: 'suggestAlternateVibesPrompt',
   input: {schema: SuggestAlternateVibesInputSchema},
   output: {schema: SuggestAlternateVibesOutputSchema},
+  config: {
+    model: 'gemini-1.5-flash-latest',
+  },
   prompt: `You are an AI assistant designed to suggest alternate vibe tags for users checking into a venue.
 
 The user has selected the following vibe tags: {{currentVibeTags}}
@@ -63,6 +66,9 @@ const suggestAlternateVibesFlow = ai.defineFlow(
   },
   async input => {
     const {output} = await prompt(input);
-    return output!;
+    if (!output) {
+      throw new Error("The AI model failed to generate a valid response.");
+    }
+    return output;
   }
 );
