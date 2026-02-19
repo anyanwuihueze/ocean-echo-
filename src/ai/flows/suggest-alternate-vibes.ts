@@ -42,7 +42,7 @@ const prompt = ai.definePrompt({
   input: {schema: SuggestAlternateVibesInputSchema},
   output: {schema: SuggestAlternateVibesOutputSchema},
   config: {
-    model: 'gemini-1.5-flash-latest',
+    model: 'googleai/gemini-1.5-flash',
   },
   prompt: `You are an AI assistant designed to suggest alternate vibe tags for users checking into a venue.
 
