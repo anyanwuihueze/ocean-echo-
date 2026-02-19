@@ -1,0 +1,374 @@
+{
+  "entities": {
+    "UserSession": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "UserSession",
+      "type": "object",
+      "description": "Represents a user's temporary presence and profile at a specific venue for a limited duration. This entity captures the user's current 'vibe' and is central to the discovery feed.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the UserSession entity."
+        },
+        "firebaseAuthUserId": {
+          "type": "string",
+          "description": "External ID from Firebase Authentication for the underlying user, linking the session to an authentication context. (Relationship: Firebase Auth User 1:N UserSession)"
+        },
+        "nickname": {
+          "type": "string",
+          "description": "The user's chosen nickname for this specific session."
+        },
+        "avatarUrl": {
+          "type": "string",
+          "description": "URL to the user's selected avatar image for this session.",
+          "format": "uri"
+        },
+        "vibeTagIds": {
+          "type": "array",
+          "description": "An array of references to VibeTag entities selected by the user to express their current mood or intent (up to 3). (Relationship: VibeTag N:N UserSession)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "checkInTime": {
+          "type": "string",
+          "description": "Timestamp indicating when the user checked into the venue.",
+          "format": "date-time"
+        },
+        "expiresAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the user's session is automatically set to expire, enforcing temporary profiles.",
+          "format": "date-time"
+        },
+        "venueId": {
+          "type": "string",
+          "description": "Reference to the Venue entity where the user is currently checked in. (Relationship: Venue 1:N UserSession)"
+        },
+        "isActive": {
+          "type": "boolean",
+          "description": "Boolean flag indicating if the user session is currently active at the venue. Used for presence tracking."
+        }
+      },
+      "required": [
+        "id",
+        "firebaseAuthUserId",
+        "nickname",
+        "avatarUrl",
+        "checkInTime",
+        "expiresAt",
+        "venueId",
+        "isActive"
+      ]
+    },
+    "VibeTag": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "VibeTag",
+      "type": "object",
+      "description": "Defines a mood or intent tag that users can select to describe their current 'vibe' at the venue.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the VibeTag entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The display name of the vibe tag (e.g., 'Just vibing', 'Deep convo')."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief explanation or context for what the vibe tag represents."
+        },
+        "iconUrl": {
+          "type": "string",
+          "description": "URL to the custom icon associated with this vibe tag for UI display.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ]
+    },
+    "Venue": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Venue",
+      "type": "object",
+      "description": "Represents a physical location, specifically the single seaside bar, where users can check in.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Venue entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The official name of the venue (e.g., 'Echo Corner')."
+        },
+        "address": {
+          "type": "string",
+          "description": "The physical street address of the venue."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief descriptive text about the venue."
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Geographic latitude coordinate of the venue."
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Geographic longitude coordinate of the venue."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "address",
+        "latitude",
+        "longitude"
+      ]
+    },
+    "Reaction": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Reaction",
+      "type": "object",
+      "description": "Records a soft interaction where one user reacts to another user's profile, vibe tags, or poll responses.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Reaction entity."
+        },
+        "reactorUserSessionId": {
+          "type": "string",
+          "description": "Reference to the UserSession entity of the user who initiated the reaction. (Relationship: UserSession 1:N Reaction)"
+        },
+        "targetUserSessionId": {
+          "type": "string",
+          "description": "Reference to the UserSession entity of the user whose profile or content was reacted to. (Relationship: UserSession 1:N Reaction)"
+        },
+        "reactionType": {
+          "type": "string",
+          "description": "The specific type of reaction (e.g., 'like', 'agree', 'smile')."
+        },
+        "vibeTagId": {
+          "type": "string",
+          "description": "Optional reference to the specific VibeTag that was reacted to, if the reaction targets a tag. (Relationship: VibeTag 1:N Reaction)"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the reaction was recorded.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "reactorUserSessionId",
+        "targetUserSessionId",
+        "reactionType",
+        "createdAt"
+      ]
+    },
+    "ChatRoom": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ChatRoom",
+      "type": "object",
+      "description": "Represents a private conversation channel between two users, unlocked after mutual reactions.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ChatRoom entity."
+        },
+        "userSessionIds": {
+          "type": "array",
+          "description": "An array containing exactly two references to the UserSession entities participating in this chat room. (Relationship: UserSession N:N ChatRoom - implicitly 2 participants)",
+          "items": {
+            "type": "string"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the chat room was initiated.",
+          "format": "date-time"
+        },
+        "lastMessageAt": {
+          "type": "string",
+          "description": "Timestamp of the most recent message sent in this chat room.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userSessionIds",
+        "createdAt"
+      ]
+    },
+    "Message": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Message",
+      "type": "object",
+      "description": "Represents an individual message sent within a ChatRoom between two users.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Message entity."
+        },
+        "chatRoomId": {
+          "type": "string",
+          "description": "Reference to the ChatRoom entity this message belongs to. (Relationship: ChatRoom 1:N Message)"
+        },
+        "senderUserSessionId": {
+          "type": "string",
+          "description": "Reference to the UserSession entity of the user who sent this message. (Relationship: UserSession 1:N Message)"
+        },
+        "content": {
+          "type": "string",
+          "description": "The text content of the message."
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "Timestamp when the message was sent.",
+          "format": "date-time"
+        },
+        "isRead": {
+          "type": "boolean",
+          "description": "Indicates whether the recipient has read this message."
+        }
+      },
+      "required": [
+        "id",
+        "chatRoomId",
+        "senderUserSessionId",
+        "content",
+        "timestamp"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/venues/{venueId}",
+        "definition": {
+          "entityName": "Venue",
+          "schema": {
+            "$ref": "#/backend/entities/Venue"
+          },
+          "description": "Stores information about the physical venue. As per requirements, there is only one such venue in the application. Publicly readable.",
+          "params": [
+            {
+              "name": "venueId",
+              "description": "The unique identifier for the venue (expected to be a known global constant like 'echo_corner_venue_id')."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/vibeTags/{vibeTagId}",
+        "definition": {
+          "entityName": "VibeTag",
+          "schema": {
+            "$ref": "#/backend/entities/VibeTag"
+          },
+          "description": "A collection of predefined tags users can select to express their 'vibe'. Publicly readable.",
+          "params": [
+            {
+              "name": "vibeTagId",
+              "description": "The unique identifier for a specific vibe tag."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/userSessions/{userId}",
+        "definition": {
+          "entityName": "UserSession",
+          "schema": {
+            "$ref": "#/backend/entities/UserSession"
+          },
+          "description": "Represents a user's *active* temporary session at the venue. The document ID is the user's Firebase Auth UID. Each document includes denormalized 'venueId' and 'isActive' status to support QAP-compliant discovery feed queries and user ownership checks without 'get()' calls.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The Firebase Authentication UID of the user whose active session this document represents."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/reactions/{reactionId}",
+        "definition": {
+          "entityName": "Reaction",
+          "schema": {
+            "$ref": "#/backend/entities/Reaction"
+          },
+          "description": "Records soft interactions between user sessions. Includes denormalized 'reactorFirebaseAuthUid', 'targetFirebaseAuthUid', and 'venueId' for authorization independence on read/list operations. Creation is recommended via Cloud Function for integrity.",
+          "params": [
+            {
+              "name": "reactionId",
+              "description": "The unique identifier for a specific reaction."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/chatRooms/{chatRoomId}",
+        "definition": {
+          "entityName": "ChatRoom",
+          "schema": {
+            "$ref": "#/backend/entities/ChatRoom"
+          },
+          "description": "Represents a private chat channel between two user sessions. Includes denormalized 'participantFirebaseAuthUids' (array of 2 UIDs) and 'venueId' for authorization independence. Creation is recommended via Cloud Function to enforce mutual reaction prerequisites.",
+          "params": [
+            {
+              "name": "chatRoomId",
+              "description": "The unique identifier for a specific chat room."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/chatRooms/{chatRoomId}/messages/{messageId}",
+        "definition": {
+          "entityName": "Message",
+          "schema": {
+            "$ref": "#/backend/entities/Message"
+          },
+          "description": "Individual messages within a chat room. Includes denormalized 'senderFirebaseAuthUid', 'participantFirebaseAuthUids', and 'venueId' (copied from the parent ChatRoom) for authorization independence on all operations.",
+          "params": [
+            {
+              "name": "chatRoomId",
+              "description": "The unique identifier of the parent chat room."
+            },
+            {
+              "name": "messageId",
+              "description": "The unique identifier for a specific message within the chat room."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/admin_roles/{userId}",
+        "definition": {
+          "entityName": "AdminRole",
+          "schema": {
+            "$ref": "#/backend/entities/AdminRole"
+          },
+          "description": "Implements Database-Backed Access Control (DBAC) for administrative roles. The existence of a document at this path for a given 'userId' grants administrative privileges. Read by the application for authorization; only backend or specific admin actions can write.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The Firebase Authentication UID of a user with administrative privileges."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure for 'Echoes at Dusk' is designed to be secure, scalable, and debuggable, strictly adhering to the core design principles and strategy mandates, especially Authorization Independence and QAPs (Queries Are Not Filters).\n\n**Authorization Independence via Denormalization:**\nCentral to this design is the strategic denormalization of authorization context to eliminate the need for `get()` calls in Firestore Security Rules, thereby improving rule clarity, debuggability, and atomic operation support.\n*   **UserSession**: For each active user, their `UserSession` document is stored at `/userSessions/{userId}`, where `{userId}` is the `firebaseAuthUserId`. This directly links the session to the authenticated user. Essential fields like `venueId` and `isActive` are stored within the document, making it self-sufficient for both individual ownership checks (`request.auth.uid == userId`) and discovery feed queries.\n*   **Reaction**: `Reaction` documents will denormalize `reactorFirebaseAuthUid`, `targetFirebaseAuthUid`, and `venueId`. This allows security rules to check read/list permissions directly from the document (`request.auth.uid == resource.data.reactorFirebaseAuthUid || request.auth.uid == resource.data.targetFirebaseAuthUid`). Creation of `Reaction`s, which involves complex cross-document validation (e.g., active sessions, mutual reactions, same venue), is ideally managed by a Cloud Function to ensure data integrity and prevent client-side tampering. The function would securely populate these denormalized fields.\n*   **ChatRoom**: Each `ChatRoom` document will include `participantFirebaseAuthUids` (an array of the two participating UIDs) and `venueId`. This enables access rules to be evaluated solely based on the `ChatRoom` document itself (`request.auth.uid in resource.data.participantFirebaseAuthUids`). Similar to `Reaction`s, `ChatRoom` creation, which requires verification of mutual interactions, is recommended to be handled by a Cloud Function.\n*   **Message**: `Message` documents, nested under `ChatRoom`s, will denormalize `senderFirebaseAuthUid`, `participantFirebaseAuthUids`, and `venueId` (copied from the parent `ChatRoom`). This ensures that `create`, `read`, and `update` (e.g., `isRead` status) operations for messages can be fully authorized by checking fields within the `Message` document itself (`request.auth.uid == request.resource.data.senderFirebaseAuthUid && request.auth.uid in request.resource.data.participantFirebaseAuthUids`), without requiring `get()` calls to the parent `ChatRoom` or `UserSession` documents.\n\n**QAPs (Queries Are Not Filters):**\n*   **UserSession Discovery Feed**: The application's core constraint of being \"anchored to a single physical venue\" is key. This implies a globally constant `venueId` (e.g., `echo_corner_venue_id`). The client will query `/userSessions` with `where('venueId', '==', 'echo_corner_venue_id')`, `where('isActive', '==', true)`, and `where('expiresAt', '>', request.time)`. Security rules will explicitly enforce these query parameters, guaranteeing that `list` operations only return active sessions from the designated single venue, without needing to perform `get()` calls to determine the requesting user's own `venueId`. This ensures efficient and secure `list` operations.\n*   **VibeTag and Venue**: These collections serve as public, read-only lookup data. `list` operations are inherently QAP-compliant as all documents are intended for public access.\n*   **Reaction, ChatRoom, and Message `list` operations**: These are made QAP-compliant by querying against the denormalized `firebaseAuthUid` fields (e.g., `where('participantFirebaseAuthUids', 'array-contains', request.auth.uid)`) and the constant `venueId`. Rules enforce these filters, ensuring that `list` queries are precise and secure without acting as filters after data retrieval."
+  }
+}
