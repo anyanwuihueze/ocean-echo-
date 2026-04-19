@@ -12,3 +12,12 @@ export interface UserProfile {
   avatarUrl: string;
   vibeTags: Vibe[];
 }
+
+export interface Note {
+  id: string;
+  senderId: string;
+  senderNickname: string;
+  content: string;
+  timestamp: Date;
+  isRead: boolean;
+}

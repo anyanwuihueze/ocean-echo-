@@ -18,16 +18,16 @@ export function VibeTag({ vibe, isSelected, onClick, isInteractive = true }: Vib
       onClick={onClick}
       disabled={TagElement === 'button' && !isInteractive}
       className={cn(
-        "flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium border transition-all duration-200",
+        "flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium border transition-all duration-200 uppercase tracking-wider",
         isSelected
-          ? 'bg-accent text-accent-foreground border-accent-foreground/50 shadow-md'
-          : 'bg-secondary/50 border-border',
+          ? 'bg-accent text-accent-foreground border-accent-foreground/50 shadow-lg'
+          : 'bg-white/5 border-white/10 text-white/70',
         onClick && isInteractive
-          ? 'cursor-pointer hover:bg-accent hover:text-accent-foreground hover:border-accent-foreground/50 hover:shadow-md'
+          ? 'cursor-pointer hover:bg-accent/80 hover:text-white hover:border-accent shadow-sm'
           : 'cursor-default'
       )}
     >
-      <VibeIcon className="h-4 w-4" />
+      <VibeIcon className="h-3 w-3" />
       <span>{vibe.label}</span>
     </TagElement>
   );
