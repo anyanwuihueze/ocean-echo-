@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { UserProfileCard } from '@/components/app/UserProfileCard';
 import { mockUsers } from '@/lib/data';
 import type { UserProfile, Note } from '@/lib/types';
@@ -38,6 +38,12 @@ export function DiscoveryFeed({
   onSimulateEcho 
 }: DiscoveryFeedProps) {
   const [isNotesOpen, setIsNotesOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const otherUsers = mockUsers.filter(user => user.id !== currentUser.id);
   const allUsers = [currentUser, ...otherUsers];
   const unreadCount = notes.filter(n => !n.isRead).length;
@@ -54,7 +60,6 @@ export function DiscoveryFeed({
         </div>
         
         <div className="flex flex-wrap items-center justify-center gap-3">
-          {/* Debug/Simulation Trigger */}
           <Button 
             variant="ghost" 
             size="sm" 
@@ -100,14 +105,14 @@ export function DiscoveryFeed({
                          className={`p-4 rounded-xl border transition-all cursor-pointer ${
                            note.isRead 
                            ? 'bg-zinc-900/50 border-white/5 opacity-70' 
-                           : 'bg-accent/10 border-accent/30 shadow-[0_0_15px_rgba(var(--accent),0.1)]'
+                           : 'bg-accent/10 border-accent/30'
                          }`}
                          onClick={() => onMarkRead(note.id)}
                        >
                          <div className="flex justify-between items-start mb-2">
                            <span className="font-bold text-accent text-sm">{note.senderNickname}</span>
                            <span className="text-[10px] text-zinc-500 uppercase font-mono">
-                             {formatDistanceToNow(new Date(note.timestamp), { addSuffix: true })}
+                             {isMounted ? formatDistanceToNow(new Date(note.timestamp), { addSuffix: true }) : 'just now'}
                            </span>
                          </div>
                          <p className="text-sm text-zinc-200 leading-relaxed font-light">{note.content}</p>

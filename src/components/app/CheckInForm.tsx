@@ -28,7 +28,8 @@ interface CheckInFormProps {
 }
 
 export function CheckInForm({ onCheckIn }: CheckInFormProps) {
-  const [selectedAvatar, setSelectedAvatar] = useState(PlaceHolderImages[0].imageUrl);
+  const initialAvatar = PlaceHolderImages.length > 0 ? PlaceHolderImages[0].imageUrl : '';
+  const [selectedAvatar, setSelectedAvatar] = useState(initialAvatar);
   const [selectedVibes, setSelectedVibes] = useState<Vibe[]>([]);
   const { toast } = useToast();
 
@@ -67,8 +68,15 @@ export function CheckInForm({ onCheckIn }: CheckInFormProps) {
       return;
     }
 
+    let generatedId;
+    try {
+      generatedId = crypto.randomUUID();
+    } catch (e) {
+      generatedId = Math.random().toString(36).substring(2, 15);
+    }
+
     const profile: UserProfile = {
-      id: crypto.randomUUID(),
+      id: generatedId,
       nickname: data.nickname,
       avatarUrl: selectedAvatar,
       vibeTags: selectedVibes,
@@ -77,19 +85,19 @@ export function CheckInForm({ onCheckIn }: CheckInFormProps) {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto bg-card/70 backdrop-blur-sm">
+    <Card className="w-full max-w-md mx-auto bg-card/70 backdrop-blur-sm border-white/5">
       <CardHeader className="text-center">
         <div className="mx-auto bg-gradient-to-br from-primary to-accent p-2 rounded-full w-fit mb-4">
           <Sparkles className="text-primary-foreground h-8 w-8" />
         </div>
-        <CardTitle className="font-headline text-3xl">Echoes at Dusk</CardTitle>
-        <CardDescription>You're about to enter Echo Corner. Set your vibe.</CardDescription>
+        <CardTitle className="font-headline text-3xl text-white">Echoes at Dusk</CardTitle>
+        <CardDescription className="text-zinc-400">You're about to enter Echo Corner. Set your vibe.</CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <div className="space-y-4">
-              <FormLabel>1. Choose your look</FormLabel>
+              <FormLabel className="text-zinc-300">1. Choose your look</FormLabel>
               <div className="grid grid-cols-4 gap-4">
                 {PlaceHolderImages.slice(0, 8).map((img) => (
                   <button
@@ -109,7 +117,6 @@ export function CheckInForm({ onCheckIn }: CheckInFormProps) {
                       width={80}
                       height={80}
                       className="w-full h-full object-cover"
-                      data-ai-hint={img.imageHint}
                     />
                   </button>
                 ))}
@@ -121,9 +128,9 @@ export function CheckInForm({ onCheckIn }: CheckInFormProps) {
               name="nickname"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>2. What's your name?</FormLabel>
+                  <FormLabel className="text-zinc-300">2. What's your name?</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter a nickname..." {...field} />
+                    <Input placeholder="Enter a nickname..." {...field} className="bg-zinc-900/50 border-white/10 text-white" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -131,7 +138,7 @@ export function CheckInForm({ onCheckIn }: CheckInFormProps) {
             />
 
             <div className="space-y-4">
-              <FormLabel>3. What's the vibe? (Max 3)</FormLabel>
+              <FormLabel className="text-zinc-300">3. What's the vibe? (Max 3)</FormLabel>
               <div className="flex flex-wrap gap-2">
                 {vibeTags.map((vibe) => (
                   <VibeTag
@@ -144,7 +151,7 @@ export function CheckInForm({ onCheckIn }: CheckInFormProps) {
               </div>
             </div>
 
-            <Button type="submit" size="lg" className="w-full">
+            <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold">
               Enter Echo Corner
             </Button>
           </form>

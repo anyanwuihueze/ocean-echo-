@@ -13,7 +13,8 @@ export const vibeTags: Vibe[] = [
 
 const getAvatar = (id: string) => {
     const img = PlaceHolderImages.find(p => p.id === id);
-    return img ? img.imageUrl : PlaceHolderImages[0].imageUrl;
+    if (img) return img.imageUrl;
+    return PlaceHolderImages.length > 0 ? PlaceHolderImages[0].imageUrl : '';
 }
 
 export const mockUsers: UserProfile[] = [
