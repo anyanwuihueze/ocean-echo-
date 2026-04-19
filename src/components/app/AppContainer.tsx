@@ -12,12 +12,11 @@ export default function AppContainer() {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [notes, setNotes] = useState<Note[]>([]);
 
-  // Robust ID generator fallback for browsers
   const generateId = () => {
     try {
       return crypto.randomUUID();
     } catch (e) {
-      return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      return Math.random().toString(36).substring(2, 15);
     }
   };
 
@@ -32,10 +31,6 @@ export default function AppContainer() {
       setUserProfile(null);
       setNotes([]);
     }, 500);
-  };
-
-  const sendNote = (targetUserId: string, content: string) => {
-    console.log(`Note sent to ${targetUserId}: ${content}`);
   };
 
   const simulateIncomingNote = useCallback(() => {
@@ -66,7 +61,7 @@ export default function AppContainer() {
 
     const interval = setInterval(() => {
       simulateIncomingNote();
-    }, 45000);
+    }, 60000); // Trigger every minute for simulation
 
     return () => clearInterval(interval);
   }, [isCheckedIn, simulateIncomingNote]);
@@ -91,7 +86,7 @@ export default function AppContainer() {
             currentUser={userProfile} 
             notes={notes}
             onMarkRead={markAsRead}
-            onSendNote={sendNote}
+            onSendNote={(uid, msg) => console.log('Sent to', uid, msg)}
             onSimulateEcho={simulateIncomingNote}
           />
         ) : (
