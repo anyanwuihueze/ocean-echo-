@@ -1,3 +1,4 @@
+
 import type { LucideIcon } from "lucide-react";
 
 export interface Vibe {
@@ -18,6 +19,6 @@ export interface Note {
   senderId: string;
   senderNickname: string;
   content: string;
-  timestamp: Date;
+  timestamp: string; // ISO string to avoid hydration mismatches
   isRead: boolean;
 }
