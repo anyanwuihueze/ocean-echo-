@@ -26,10 +26,13 @@ const prompt = ai.definePrompt({
   config: {
     model: 'googleai/gemini-1.5-flash',
   },
-  prompt: `Suggest alternate vibe tags for a user at a seaside bar.
+  prompt: `You are the AI Vibe Curator for Echoes at Dusk, a high-end social discovery app at a seaside bar.
+Given the user's current vibes and the venue's atmosphere, suggest 3 new vibe tags that might help them connect with others better.
+
 Current vibes: {{#each currentVibeTags}}{{{this}}}{{#unless @last}}, {{/unless}}{{/each}}
 Atmosphere: {{{currentAtmosphere}}}
-Output JSON only.`,
+
+Provide the 3 suggested tags and a short, poetic reasoning for your choice.`,
 });
 
 const suggestAlternateVibesFlow = ai.defineFlow(
