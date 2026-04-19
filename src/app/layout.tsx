@@ -7,7 +7,6 @@ export const metadata: Metadata = {
   title: 'Echoes at Dusk',
   description: 'Discover and connect with others through shared vibes.',
   manifest: '/manifest.json',
-  themeColor: '#0a0a0a',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
@@ -25,9 +24,10 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+        <meta name="theme-color" content="#000000" />
       </head>
-      <body className={cn('font-body antialiased min-h-screen')}>
+      <body className={cn('font-body antialiased min-h-screen bg-black text-white')}>
         {children}
         <Toaster />
       </body>

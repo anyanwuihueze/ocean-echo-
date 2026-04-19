@@ -2,51 +2,51 @@
   "placeholderImages": [
     {
       "id": "avatar1",
-      "description": "Portrait of a woman with curly hair",
-      "imageUrl": "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "portrait woman"
+      "description": "High-fashion portrait of a woman in low light",
+      "imageUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "fashion portrait"
     },
     {
       "id": "avatar2",
-      "description": "Black and white portrait of a woman",
-      "imageUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "portrait woman"
+      "description": "Cinematic portrait of a man with neon highlights",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "cinematic portrait"
     },
     {
       "id": "avatar3",
-      "description": "Smiling man with a beard",
-      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "portrait man"
+      "description": "Edgy portrait of a person with piercings and dark clothes",
+      "imageUrl": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "edgy portrait"
     },
     {
       "id": "avatar4",
-      "description": "Man wearing headphones and looking away",
-      "imageUrl": "https://images.unsplash.com/photo-1583864697784-a0efc8379f70?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "portrait man"
+      "description": "Artistic portrait of a woman with red hair",
+      "imageUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "artistic portrait"
     },
     {
       "id": "avatar5",
-      "description": "Woman in a neon-lit environment",
-      "imageUrl": "https://images.unsplash.com/photo-1611601322175-8041a2033b9c?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "neon portrait"
+      "description": "Moody portrait of a man in a leather jacket",
+      "imageUrl": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "moody portrait"
     },
     {
       "id": "avatar6",
-      "description": "Man's profile with neon light",
-      "imageUrl": "https://images.unsplash.com/photo-1589995808361-159e8f0f0dfe?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "neon portrait"
+      "description": "Stylish portrait of a woman with braided hair",
+      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "stylish portrait"
     },
     {
       "id": "avatar7",
-      "description": "Man with dramatic lighting on his face",
-      "imageUrl": "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "dramatic portrait"
+      "description": "Minimalist portrait of a man in a black turtleneck",
+      "imageUrl": "https://images.unsplash.com/photo-1504257432389-52343af06ae3?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "minimalist portrait"
     },
     {
       "id": "avatar8",
-      "description": "Woman looking at the camera with soft lighting",
-      "imageUrl": "https://images.unsplash.com/photo-1621784564114-539c38183182?q=80&w=800&auto=format&fit=crop",
-      "imageHint": "portrait woman"
+      "description": "Dreamy portrait of a person in warm evening light",
+      "imageUrl": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop",
+      "imageHint": "dreamy portrait"
     }
   ]
 }

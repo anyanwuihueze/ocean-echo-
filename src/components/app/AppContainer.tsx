@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
@@ -13,9 +12,13 @@ export default function AppContainer() {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [notes, setNotes] = useState<Note[]>([]);
 
-  // Robust ID generator for the simulation
+  // Robust ID generator fallback for browsers
   const generateId = () => {
-    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    try {
+      return crypto.randomUUID();
+    } catch (e) {
+      return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    }
   };
 
   const handleCheckIn = (profile: UserProfile) => {
@@ -32,8 +35,6 @@ export default function AppContainer() {
   };
 
   const sendNote = (targetUserId: string, content: string) => {
-    // In a real app, this would write to Firestore. 
-    // For simulation, we just log it.
     console.log(`Note sent to ${targetUserId}: ${content}`);
   };
 
@@ -53,14 +54,13 @@ export default function AppContainer() {
       senderId: randomUser.id,
       senderNickname: randomUser.nickname,
       content: simulatedMessages[Math.floor(Math.random() * simulatedMessages.length)],
-      timestamp: new Date().toISOString(), // Store as string to avoid hydration mismatches
+      timestamp: new Date().toISOString(),
       isRead: false,
     };
 
     setNotes(prev => [newNote, ...prev]);
   }, []);
 
-  // Simulation: Receive a random note every 45 seconds automatically
   useEffect(() => {
     if (!isCheckedIn) return;
 
