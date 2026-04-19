@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
@@ -13,11 +14,7 @@ export default function AppContainer() {
   const [notes, setNotes] = useState<Note[]>([]);
 
   const generateId = () => {
-    try {
-      return crypto.randomUUID();
-    } catch (e) {
-      return Math.random().toString(36).substring(2, 15);
-    }
+    return Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
   };
 
   const handleCheckIn = (profile: UserProfile) => {
@@ -61,7 +58,7 @@ export default function AppContainer() {
 
     const interval = setInterval(() => {
       simulateIncomingNote();
-    }, 60000); // Trigger every minute for simulation
+    }, 60000);
 
     return () => clearInterval(interval);
   }, [isCheckedIn, simulateIncomingNote]);

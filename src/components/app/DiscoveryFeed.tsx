@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -19,6 +20,7 @@ import {
 } from "@/components/ui/sheet";
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { formatDistanceToNow } from 'date-fns';
+import { cn } from '@/lib/utils';
 
 interface DiscoveryFeedProps {
   onCheckOut: () => void;
@@ -73,7 +75,7 @@ export function DiscoveryFeed({
             className="border-accent/10 bg-accent/5 text-accent hover:bg-accent/10 text-[9px] uppercase tracking-[0.2em] font-black h-10 px-5 rounded-xl border-dashed"
           >
             <Zap className="h-3 w-3 mr-2 fill-accent" />
-            Simulate Echo
+            Test Echo
           </Button>
 
           <AiVibeCurator currentVibes={currentUser.vibeTags.map(v => v.label)} />
@@ -144,14 +146,11 @@ export function DiscoveryFeed({
       </header>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 pb-32">
-        {/* Current User Card First */}
         <UserProfileCard 
           user={currentUser} 
           isCurrentUser={true}
           currentUserVibes={currentUser.vibeTags}
         />
-        
-        {/* Other Users */}
         {otherUsers.map((user) => (
           <UserProfileCard 
             key={user.id} 
