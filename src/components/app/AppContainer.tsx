@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useCallback } from 'react';
@@ -56,6 +55,7 @@ export default function AppContainer() {
   useEffect(() => {
     if (!isCheckedIn) return;
 
+    // Simulate an incoming note every minute
     const interval = setInterval(() => {
       simulateIncomingNote();
     }, 60000);
@@ -71,10 +71,10 @@ export default function AppContainer() {
     <AnimatePresence mode="wait">
       <motion.div
         key={isCheckedIn ? 'feed' : 'form'}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 1.05 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         className="w-full flex justify-center"
       >
         {isCheckedIn && userProfile ? (
@@ -83,7 +83,7 @@ export default function AppContainer() {
             currentUser={userProfile} 
             notes={notes}
             onMarkRead={markAsRead}
-            onSendNote={(uid, msg) => console.log('Sent to', uid, msg)}
+            onSendNote={(uid, msg) => console.log('Simulated Send:', uid, msg)}
             onSimulateEcho={simulateIncomingNote}
           />
         ) : (

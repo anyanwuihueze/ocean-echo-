@@ -34,7 +34,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
       </head>
-      <body className={cn('font-body antialiased min-h-screen bg-black text-white')}>
+      <body className={cn('font-body antialiased min-h-screen bg-black text-white selection:bg-accent/30')}>
         {children}
         <Toaster />
       </body>

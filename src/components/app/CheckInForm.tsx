@@ -28,8 +28,7 @@ interface CheckInFormProps {
 }
 
 export function CheckInForm({ onCheckIn }: CheckInFormProps) {
-  const initialAvatar = PlaceHolderImages.length > 0 ? PlaceHolderImages[0].imageUrl : '';
-  const [selectedAvatar, setSelectedAvatar] = useState(initialAvatar);
+  const [selectedAvatar, setSelectedAvatar] = useState(PlaceHolderImages[0].imageUrl);
   const [selectedVibes, setSelectedVibes] = useState<Vibe[]>([]);
   const { toast } = useToast();
 
@@ -68,15 +67,8 @@ export function CheckInForm({ onCheckIn }: CheckInFormProps) {
       return;
     }
 
-    let generatedId;
-    try {
-      generatedId = crypto.randomUUID();
-    } catch (e) {
-      generatedId = Math.random().toString(36).substring(2, 15);
-    }
-
     const profile: UserProfile = {
-      id: generatedId,
+      id: Math.random().toString(36).substring(7),
       nickname: data.nickname,
       avatarUrl: selectedAvatar,
       vibeTags: selectedVibes,
@@ -85,19 +77,19 @@ export function CheckInForm({ onCheckIn }: CheckInFormProps) {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto bg-card/70 backdrop-blur-sm border-white/5">
+    <Card className="w-full max-w-md mx-auto bg-zinc-950/50 backdrop-blur-2xl border-white/5 shadow-2xl">
       <CardHeader className="text-center">
-        <div className="mx-auto bg-gradient-to-br from-primary to-accent p-2 rounded-full w-fit mb-4">
-          <Sparkles className="text-primary-foreground h-8 w-8" />
+        <div className="mx-auto bg-gradient-to-br from-accent to-primary p-2.5 rounded-2xl w-fit mb-6 shadow-lg shadow-accent/20">
+          <Sparkles className="text-white h-7 w-7" />
         </div>
-        <CardTitle className="font-headline text-3xl text-white">Echoes at Dusk</CardTitle>
-        <CardDescription className="text-zinc-400">You're about to enter Echo Corner. Set your vibe.</CardDescription>
+        <CardTitle className="font-headline text-4xl text-white tracking-tighter">Echoes at Dusk</CardTitle>
+        <CardDescription className="text-zinc-500 font-medium mt-2">Enter the corner. Set your vibe.</CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="pt-4">
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-10">
             <div className="space-y-4">
-              <FormLabel className="text-zinc-300">1. Choose your look</FormLabel>
+              <FormLabel className="text-zinc-400 text-[10px] uppercase font-black tracking-widest">1. Your Look</FormLabel>
               <div className="grid grid-cols-4 gap-4">
                 {PlaceHolderImages.slice(0, 8).map((img) => (
                   <button
@@ -105,18 +97,17 @@ export function CheckInForm({ onCheckIn }: CheckInFormProps) {
                     key={img.id}
                     onClick={() => setSelectedAvatar(img.imageUrl)}
                     className={cn(
-                      "rounded-full overflow-hidden aspect-square transition-all duration-300 ring-offset-background ring-offset-2",
+                      "relative rounded-2xl overflow-hidden aspect-square transition-all duration-500",
                       selectedAvatar === img.imageUrl
-                        ? "ring-2 ring-accent scale-110"
-                        : "opacity-60 hover:opacity-100 hover:scale-105"
+                        ? "ring-2 ring-accent scale-105 shadow-[0_0_20px_rgba(var(--accent),0.3)]"
+                        : "opacity-40 hover:opacity-100 grayscale hover:grayscale-0"
                     )}
                   >
                     <Image
                       src={img.imageUrl}
                       alt={img.description}
-                      width={80}
-                      height={80}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                     />
                   </button>
                 ))}
@@ -128,9 +119,9 @@ export function CheckInForm({ onCheckIn }: CheckInFormProps) {
               name="nickname"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-zinc-300">2. What's your name?</FormLabel>
+                  <FormLabel className="text-zinc-400 text-[10px] uppercase font-black tracking-widest">2. Your Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter a nickname..." {...field} className="bg-zinc-900/50 border-white/10 text-white" />
+                    <Input placeholder="Nickname..." {...field} className="h-14 bg-white/5 border-white/5 text-white rounded-2xl focus:ring-accent" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -138,7 +129,7 @@ export function CheckInForm({ onCheckIn }: CheckInFormProps) {
             />
 
             <div className="space-y-4">
-              <FormLabel className="text-zinc-300">3. What's the vibe? (Max 3)</FormLabel>
+              <FormLabel className="text-zinc-400 text-[10px] uppercase font-black tracking-widest">3. Your Vibe (Max 3)</FormLabel>
               <div className="flex flex-wrap gap-2">
                 {vibeTags.map((vibe) => (
                   <VibeTag
@@ -151,7 +142,7 @@ export function CheckInForm({ onCheckIn }: CheckInFormProps) {
               </div>
             </div>
 
-            <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-bold">
+            <Button type="submit" size="lg" className="w-full h-14 bg-accent hover:bg-accent/90 text-black font-black uppercase tracking-widest rounded-2xl transition-all duration-300">
               Enter Echo Corner
             </Button>
           </form>
