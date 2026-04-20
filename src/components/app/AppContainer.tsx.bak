@@ -5,13 +5,12 @@ import { CheckInForm } from '@/components/app/CheckInForm';
 import { DiscoveryFeed } from '@/components/app/DiscoveryFeed';
 import type { UserProfile, Note } from '@/lib/types';
 import { AnimatePresence, motion } from 'framer-motion';
-import { mockUsers, replyScripts } from '@/lib/data';
+import { mockUsers } from '@/lib/data';
 
 export default function AppContainer() {
   const [isCheckedIn, setIsCheckedIn] = useState(false);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [notes, setNotes] = useState<Note[]>([]);
-  const [typingUserId, setTypingUserId] = useState<string | null>(null);
 
   const generateId = () => {
     return Math.random().toString(36).substring(2, 15) + Date.now().toString(36);
@@ -27,7 +26,6 @@ export default function AppContainer() {
     setTimeout(() => {
       setUserProfile(null);
       setNotes([]);
-      setTypingUserId(null);
     }, 500);
   };
 
@@ -41,7 +39,7 @@ export default function AppContainer() {
       "Interested in a drink? I'm by the bar.",
       "That vibe tag is exactly what I'm feeling too."
     ];
-
+    
     const newNote: Note = {
       id: generateId(),
       senderId: randomUser.id,
@@ -49,60 +47,19 @@ export default function AppContainer() {
       content: simulatedMessages[Math.floor(Math.random() * simulatedMessages.length)],
       timestamp: new Date().toISOString(),
       isRead: false,
-      type: 'incoming',
-      threadId: randomUser.id,
     };
 
     setNotes(prev => [newNote, ...prev]);
   }, []);
 
-  const handleSendNote = useCallback((userId: string, content: string) => {
-    const targetUser = mockUsers.find(u => u.id === userId);
-    if (!targetUser) return;
-
-    // Save outgoing message immediately
-    const outgoing: Note = {
-      id: generateId(),
-      senderId: 'me',
-      senderNickname: 'You',
-      content,
-      timestamp: new Date().toISOString(),
-      isRead: true,
-      type: 'outgoing',
-      threadId: userId,
-    };
-    setNotes(prev => [outgoing, ...prev]);
-
-    // Show typing indicator
-    setTypingUserId(userId);
-
-    // Pick reply based on the target user's first vibe tag
-    const primaryVibeId = targetUser.vibeTags[0]?.id ?? 'default';
-    const scripts = replyScripts[primaryVibeId] ?? replyScripts['default'];
-    const replyContent = scripts[Math.floor(Math.random() * scripts.length)];
-
-    // Fire reply after 3 seconds
-    setTimeout(() => {
-      setTypingUserId(null);
-      const reply: Note = {
-        id: generateId(),
-        senderId: targetUser.id,
-        senderNickname: targetUser.nickname,
-        content: replyContent,
-        timestamp: new Date().toISOString(),
-        isRead: false,
-        type: 'incoming',
-        threadId: userId,
-      };
-      setNotes(prev => [reply, ...prev]);
-    }, 3000);
-  }, []);
-
   useEffect(() => {
     if (!isCheckedIn) return;
+
+    // Simulate an incoming note every minute
     const interval = setInterval(() => {
       simulateIncomingNote();
     }, 60000);
+
     return () => clearInterval(interval);
   }, [isCheckedIn, simulateIncomingNote]);
 
@@ -121,14 +78,13 @@ export default function AppContainer() {
         className="w-full flex justify-center"
       >
         {isCheckedIn && userProfile ? (
-          <DiscoveryFeed
-            onCheckOut={handleCheckOut}
-            currentUser={userProfile}
+          <DiscoveryFeed 
+            onCheckOut={handleCheckOut} 
+            currentUser={userProfile} 
             notes={notes}
             onMarkRead={markAsRead}
-            onSendNote={handleSendNote}
+            onSendNote={(uid, msg) => console.log('Simulated Send:', uid, msg)}
             onSimulateEcho={simulateIncomingNote}
-            typingUserId={typingUserId}
           />
         ) : (
           <CheckInForm onCheckIn={handleCheckIn} />

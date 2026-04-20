@@ -12,10 +12,10 @@ export const vibeTags: Vibe[] = [
 ];
 
 const getAvatar = (id: string) => {
-    const img = PlaceHolderImages.find(p => p.id === id);
-    if (img) return img.imageUrl;
-    return PlaceHolderImages.length > 0 ? PlaceHolderImages[0].imageUrl : '';
-}
+  const img = PlaceHolderImages.find(p => p.id === id);
+  if (img) return img.imageUrl;
+  return PlaceHolderImages.length > 0 ? PlaceHolderImages[0].imageUrl : '';
+};
 
 export const mockUsers: UserProfile[] = [
   {
@@ -67,3 +67,48 @@ export const mockUsers: UserProfile[] = [
     vibeTags: [vibeTags[0], vibeTags[2]],
   },
 ];
+
+export const replyScripts: Record<string, string[]> = {
+  'sunset': [
+    "It's gorgeous right? The light hits different out here 🌅",
+    "Sunset drinks are literally my whole personality tonight 😄",
+    "I come here every Friday just for this view. You?",
+    "The horizon looks unreal tonight. You picked a good night to be out.",
+  ],
+  'vibing': [
+    "Same energy honestly. No agenda, just good atmosphere ✨",
+    "This is exactly the vibe I needed tonight.",
+    "Just here for the moment. Love that you get it.",
+    "Rare to find someone who just *gets* the vibe without explanation 😌",
+  ],
+  'music': [
+    "The DJ tonight is seriously underrated ��",
+    "Music & movement is the only way to exist on a Friday.",
+    "I was literally just thinking someone else here must be feeling this set.",
+    "Who's your go-to artist right now? I need new recs.",
+  ],
+  'convo': [
+    "Finally someone who wants to actually *talk* 😂",
+    "Okay real question — what's the most interesting thing that happened to you this week?",
+    "I feel like deep convos in loud bars are a vibe of their own.",
+    "You seem like you have a story. What brought you out tonight?",
+  ],
+  'after-dark': [
+    "The night is still young honestly 🌙",
+    "After-dark energy is the only energy that matters.",
+    "I have a feeling tonight is going to be one of those nights.",
+    "Good things happen after midnight. Just saying.",
+  ],
+  'meeting': [
+    "Love that you're open to it — so am I! What's your scene?",
+    "Meeting people in real life > any app. This is proof 😄",
+    "Okay so tell me something about yourself that's NOT on a dating profile.",
+    "I always say the best connections happen when you least expect them.",
+  ],
+  'default': [
+    "Hey! Glad you reached out 👋",
+    "This app is wild right? Love the concept.",
+    "You've got good energy, I could tell from across the room.",
+    "Tonight has been full of surprises. You might be the best one 😄",
+  ],
+};

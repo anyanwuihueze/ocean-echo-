@@ -12,7 +12,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { VibeTag } from "@/components/app/VibeTag";
-import { vibeTags, type Vibe } from "@/lib/data";
+import { vibeTags } from "@/lib/data";
+import type { Vibe } from "@/lib/types";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import type { UserProfile } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -82,7 +83,7 @@ export function CheckInForm({ onCheckIn }: CheckInFormProps) {
         <div className="mx-auto bg-gradient-to-br from-accent to-primary p-2.5 rounded-2xl w-fit mb-6 shadow-lg shadow-accent/20">
           <Sparkles className="text-white h-7 w-7" />
         </div>
-        <CardTitle className="font-headline text-4xl text-white tracking-tighter">Echoes at Dusk</CardTitle>
+        <CardTitle className="font-headline text-4xl text-white tracking-tighter">Ocean Echoes</CardTitle>
         <CardDescription className="text-zinc-500 font-medium mt-2">Enter the corner. Set your vibe.</CardDescription>
       </CardHeader>
       <CardContent className="pt-4">

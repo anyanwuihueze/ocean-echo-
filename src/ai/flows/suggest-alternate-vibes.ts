@@ -26,7 +26,7 @@ const prompt = ai.definePrompt({
   config: {
     model: 'googleai/gemini-1.5-flash',
   },
-  prompt: `You are the AI Vibe Curator for Echoes at Dusk, a high-end social discovery app at a seaside bar.
+  prompt: `You are the AI Vibe Curator for Ocean Echoes, a high-end social discovery app at a seaside bar.
 Given the user's current vibes and the venue's atmosphere, suggest 3 new vibe tags that might help them connect with others better.
 
 Current vibes: {{#each currentVibeTags}}{{{this}}}{{#unless @last}}, {{/unless}}{{/each}}

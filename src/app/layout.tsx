@@ -4,13 +4,13 @@ import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Echoes at Dusk',
+  title: 'Ocean Echoes',
   description: 'Real-time social discovery for the modern night.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'Echoes at Dusk',
+    title: 'Ocean Echoes',
   },
 };
 
